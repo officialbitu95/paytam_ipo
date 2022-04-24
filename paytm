@@ -1,0 +1,83 @@
+#include<stdio.h>
+
+int max(int arr[],int n){
+	
+	int max=arr[0];
+	int i;
+	for(i=0;i<n;i++){
+		
+			if(arr[i]>=max ){
+				max=arr[i];
+			}
+		
+	}
+	return max;
+}
+
+ int min (int arr[],int n){
+ 	int min=arr[0];
+ 	int i;
+ 	for(i=0;i<n;i++){
+ 		if(arr[i]<=min){
+ 			min=arr[i];
+		 }
+	 }
+	 return min;
+ }
+
+int main(){
+	int t;
+	scanf("%d",&t);
+	for(int i=1;i<=t;i++){
+	char temp;
+	int data[10000];
+	int j=0; 
+	while (1) {
+    scanf("%d%c", &data[j++], &temp);
+    if (temp == '\n')
+        break;
+   }
+   int len=j;
+   int maxx=max(data,len);
+   int minn=min(data,len);	
+   int profit;
+   profit=maxx-minn;
+   int hh=9;
+   int mm=30;
+   for(int i=0;i<len;i++){
+   	 if(data[i]==maxx){
+   	 	if(mm==60){
+   	 		 hh++;
+   	 		 mm=0;
+   	 		 if(hh>12){
+   	 		    hh=1;	
+   	 		 	break;
+			   }
+			   else{
+			   	break;
+			   }
+			}
+		   else{
+		   	break;
+		   }	
+		}
+		else{
+			mm=mm+10;
+			if(mm==60){
+				hh++;
+				mm=0;
+				
+			}
+			if(hh>12){
+				hh=1;
+			}
+			
+		}
+    }
+       float ans=(float)mm/100;
+       float time= ans+(float)hh;
+       printf("%d  %0.2f\n",profit,time);
+    }
+	return 0;
+}
+
